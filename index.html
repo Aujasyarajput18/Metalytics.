@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
+
     <header>
         <div class="header-left">
             <div class="logo-icon">₿</div>
@@ -24,7 +24,7 @@
         </div>
     </header>
 
-    <!-- Controls: Search, Filter, Sort -->
+    <!-- search, filter and sort controls -->
     <div class="controls">
         <input type="text" id="search-input" placeholder="🔍  Search by name or symbol…" autocomplete="off">
         <select id="filter-select">
@@ -45,7 +45,7 @@
         </select>
     </div>
 
-    <!-- Stats Bar -->
+    <!-- summary stats -->
     <div class="stats-bar">
         <div class="stat-chip"><span class="stat-label">Showing</span><span class="stat-value" id="stat-total">0</span></div>
         <div class="stat-chip"><span class="stat-label">Total</span><span class="stat-value" id="stat-coins">0</span></div>
@@ -53,22 +53,19 @@
         <div class="stat-chip"><span class="stat-label">Favorites</span><span class="stat-value" id="stat-favs">0</span></div>
     </div>
 
-    <!-- Loader -->
     <div id="loader" class="loader">
         <div class="spinner"></div>
         <p>Fetching live prices…</p>
     </div>
 
-    <!-- Error Banner -->
     <div id="error-msg" class="error-msg" style="display:none;"></div>
 
-    <!-- Cards Grid (rendered by JS using .map()) -->
+    <!-- cards get injected here by JS -->
     <div id="cards-container" class="cards-container"></div>
 
-    <!-- View All / Back to Dashboard toggle -->
+    <!-- view all / back button area -->
     <div id="view-toggle" class="view-toggle"></div>
 
-    <!-- Footer -->
     <footer>
         <p>Built with vanilla HTML, CSS & JS · Data from <a href="https://www.coingecko.com/" target="_blank">CoinGecko</a></p>
     </footer>

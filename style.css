@@ -1,7 +1,10 @@
-/* ===== RESET ===== */
+/*  Metalytics – Crypto Dashboard
+    Main stylesheet - dark theme default with light mode toggle */
+
+/* reset */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ===== CSS VARIABLES (Dark Theme) ===== */
+/* color scheme - dark mode (default) */
 :root {
     --bg-body: #0b0f19;
     --bg-card: #1a2235;
@@ -25,7 +28,7 @@
     --radius-md: 12px;
 }
 
-/* ===== LIGHT THEME ===== */
+/* light mode overrides */
 [data-theme="light"] {
     --bg-body: #f0f2f5;
     --bg-card: #ffffff;
@@ -40,7 +43,6 @@
     --shadow-glow: 0 0 20px rgba(247, 183, 49, 0.05);
 }
 
-/* ===== BODY ===== */
 body {
     font-family: var(--font);
     background: var(--bg-body);
@@ -53,7 +55,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ===== HEADER ===== */
+/* header layout */
 header {
     display: flex;
     justify-content: space-between;
@@ -67,11 +69,7 @@ header {
     background: var(--bg-body);
 }
 
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
+.header-left { display: flex; align-items: center; gap: 14px; }
 
 .logo-icon {
     width: 44px;
@@ -104,9 +102,7 @@ header h1 {
 }
 
 .tagline { color: var(--text-secondary); font-size: 0.78rem; font-weight: 500; }
-
 .header-right { display: flex; align-items: center; gap: 12px; }
-
 .last-updated { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; }
 
 #theme-toggle {
@@ -123,10 +119,9 @@ header h1 {
     justify-content: center;
     transition: all 0.15s;
 }
-
 #theme-toggle:hover { border-color: var(--border-hover); transform: scale(1.05); }
 
-/* ===== CONTROLS ===== */
+/* controls bar (search + dropdowns) */
 .controls { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
 
 .controls input,
@@ -144,6 +139,7 @@ header h1 {
 
 .controls input { flex: 1; min-width: 220px; }
 .controls input::placeholder { color: var(--text-muted); }
+
 .controls input:focus, .controls select:focus {
     border-color: var(--accent-1);
     box-shadow: 0 0 0 3px rgba(247, 183, 49, 0.1);
@@ -158,7 +154,7 @@ header h1 {
     background-position: right 12px center;
 }
 
-/* ===== STATS BAR ===== */
+/* stats chips row */
 .stats-bar { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
 
 .stat-chip {
@@ -175,7 +171,7 @@ header h1 {
 .stat-value { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
 .stat-value.green { color: var(--green); }
 
-/* ===== LOADER ===== */
+/* loading spinner */
 .loader { display: none; text-align: center; padding: 80px 20px; color: var(--text-secondary); }
 .loader.active { display: block; }
 .loader p { font-size: 0.88rem; font-weight: 500; }
@@ -190,14 +186,14 @@ header h1 {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ===== ERROR ===== */
+/* error banner */
 .error-msg {
     text-align: center; padding: 24px; margin-bottom: 20px;
     background: var(--red-bg); border: 1px solid rgba(231, 76, 60, 0.2);
     border-radius: var(--radius-md); color: var(--red); font-size: 0.88rem; font-weight: 500;
 }
 
-/* ===== CARDS GRID ===== */
+/* cards grid */
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -205,7 +201,7 @@ header h1 {
     margin-bottom: 40px;
 }
 
-/* ===== CARD ===== */
+/* individual card */
 .card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -216,6 +212,7 @@ header h1 {
     overflow: hidden;
 }
 
+/* gold accent line on top of card (visible on hover) */
 .card::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0;
@@ -235,10 +232,18 @@ header h1 {
 .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
 .card-info { display: flex; align-items: center; gap: 10px; }
 .card-rank { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); min-width: 28px; }
-.card-icon { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: var(--bg-surface); }
+
+.card-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--bg-surface);
+}
+
 .card-name { font-weight: 600; font-size: 0.95rem; line-height: 1.2; }
 .card-symbol { color: var(--text-secondary); font-size: 0.72rem; font-weight: 500; margin-top: 1px; }
 
+/* fav star button */
 .favorite-btn {
     background: none; border: none; font-size: 1.3rem;
     cursor: pointer; padding: 4px; line-height: 1;
@@ -255,6 +260,7 @@ header h1 {
 
 .card-price { font-size: 1.45rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.5px; }
 
+/* green/red change badge */
 .card-change { font-size: 0.88rem; font-weight: 600; padding: 3px 10px; border-radius: 6px; display: inline-block; margin-bottom: 4px; }
 .card-change.positive { color: var(--green); background: var(--green-bg); }
 .card-change.negative { color: var(--red); background: var(--red-bg); }
@@ -265,22 +271,11 @@ header h1 {
 }
 .card-footer-label { font-size: 0.74rem; color: var(--text-secondary); font-weight: 500; }
 
-/* ===== NO RESULTS ===== */
+/* empty state */
 .no-results { text-align: center; padding: 60px 20px; color: var(--text-secondary); grid-column: 1 / -1; font-size: 0.95rem; }
 .no-results .no-results-icon { font-size: 2.5rem; margin-bottom: 12px; display: block; }
 
-/* Search hint — shown below top 10 default view */
-.search-hint {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 24px 20px;
-    color: var(--text-muted);
-    font-size: 0.88rem;
-    border-top: 1px solid var(--border-color);
-    margin-top: 8px;
-}
-
-/* ===== VIEW TOGGLE BUTTONS ===== */
+/* view all / back / load more buttons */
 .view-toggle {
     display: flex;
     justify-content: center;
@@ -302,7 +297,6 @@ header h1 {
     transition: all 0.2s;
     box-shadow: 0 2px 12px rgba(247, 183, 49, 0.2);
 }
-
 .view-all-btn:hover, .load-more-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 20px rgba(247, 183, 49, 0.35);
@@ -320,18 +314,14 @@ header h1 {
     cursor: pointer;
     transition: all 0.2s;
 }
+.back-btn:hover { border-color: var(--accent-1); color: var(--accent-1); }
 
-.back-btn:hover {
-    border-color: var(--accent-1);
-    color: var(--accent-1);
-}
-
-/* ===== FOOTER ===== */
+/* footer */
 footer { text-align: center; padding: 20px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.78rem; }
 footer a { color: var(--accent-1); text-decoration: none; font-weight: 500; }
 footer a:hover { text-decoration: underline; }
 
-/* ===== RESPONSIVE ===== */
+/* tablet */
 @media (max-width: 768px) {
     body { padding: 0 16px 32px; }
     header h1 { font-size: 1.25rem; }
@@ -342,6 +332,7 @@ footer a:hover { text-decoration: underline; }
     .cards-container { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
 }
 
+/* mobile */
 @media (max-width: 480px) {
     body { padding: 0 12px 24px; }
     .logo-icon { width: 36px; height: 36px; font-size: 1.1rem; }
