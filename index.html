@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metalytics – Crypto Dashboard</title>
+    <meta name="description" content="Live cryptocurrency prices with search, filter, and sort.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="logo-icon">₿</div>
+            <div>
+                <h1>Metalytics</h1>
+                <span class="tagline">Live Crypto Dashboard</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <span id="last-updated" class="last-updated"></span>
+            <button id="theme-toggle" title="Toggle Theme">🌙</button>
+        </div>
+    </header>
+
+    <!-- Controls: Search, Filter, Sort -->
+    <div class="controls">
+        <input type="text" id="search-input" placeholder="🔍  Search by name or symbol…" autocomplete="off">
+        <select id="filter-select">
+            <option value="all">All Coins</option>
+            <option value="top10">Top 10</option>
+            <option value="gainers">📈 Gainers</option>
+            <option value="losers">📉 Losers</option>
+            <option value="favorites">⭐ Favorites</option>
+        </select>
+        <select id="sort-select">
+            <option value="market_cap">Market Cap</option>
+            <option value="price_high">Price: High → Low</option>
+            <option value="price_low">Price: Low → High</option>
+            <option value="change_high">Change: Best First</option>
+            <option value="change_low">Change: Worst First</option>
+            <option value="name_az">Name: A → Z</option>
+            <option value="name_za">Name: Z → A</option>
+        </select>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-chip"><span class="stat-label">Showing</span><span class="stat-value" id="stat-total">0</span></div>
+        <div class="stat-chip"><span class="stat-label">Total</span><span class="stat-value" id="stat-coins">0</span></div>
+        <div class="stat-chip"><span class="stat-label">Gainers</span><span class="stat-value green" id="stat-gainers">0</span></div>
+        <div class="stat-chip"><span class="stat-label">Favorites</span><span class="stat-value" id="stat-favs">0</span></div>
+    </div>
+
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+        <p>Fetching live prices…</p>
+    </div>
+
+    <!-- Error Banner -->
+    <div id="error-msg" class="error-msg" style="display:none;"></div>
+
+    <!-- Cards Grid (rendered by JS using .map()) -->
+    <div id="cards-container" class="cards-container"></div>
+
+    <!-- View All / Back to Dashboard toggle -->
+    <div id="view-toggle" class="view-toggle"></div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Built with vanilla HTML, CSS & JS · Data from <a href="https://www.coingecko.com/" target="_blank">CoinGecko</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
